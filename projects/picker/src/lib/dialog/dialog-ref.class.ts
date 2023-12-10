@@ -7,7 +7,7 @@ import { GlobalPositionStrategy, OverlayRef } from '@angular/cdk/overlay';
 import { ESCAPE } from '@angular/cdk/keycodes';
 import { OwlDialogContainerComponent } from './dialog-container.component';
 import { DialogPosition } from './dialog-config.class';
-import { Observable, Subject, Subscription, SubscriptionLike as ISubscription } from 'rxjs';
+import { Observable, Subject, Subscription, SubscriptionLike as ISubscription, NEVER } from 'rxjs';
 import { filter, take } from 'rxjs/operators';
 
 export class OwlDialogRef<T> {
@@ -42,7 +42,7 @@ export class OwlDialogRef<T> {
                 take(1)
             )
             .subscribe(() => {
-                this._afterOpen$.next();
+                this._afterOpen$.next(NEVER);
                 this._afterOpen$.complete();
             });
 

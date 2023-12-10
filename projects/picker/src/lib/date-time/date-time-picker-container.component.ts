@@ -19,7 +19,7 @@ import { OwlCalendarComponent } from './calendar.component';
 import { OwlTimerComponent } from './timer.component';
 import { DateTimeAdapter } from './adapter/date-time-adapter.class';
 import { OwlDateTime, PickerType } from './date-time.class';
-import { Observable, Subject } from 'rxjs';
+import { NEVER, Observable, Subject } from 'rxjs';
 import { owlDateTimePickerAnimations } from './date-time-picker.animations';
 import {
     DOWN_ARROW,
@@ -216,7 +216,7 @@ export class OwlDateTimeContainerComponent<T>
     public handleContainerAnimationDone(event: AnimationEvent): void {
         const toState = event.toState;
         if (toState === 'enter') {
-            this.pickerOpened$.next();
+            this.pickerOpened$.next(NEVER);
         }
     }
 
